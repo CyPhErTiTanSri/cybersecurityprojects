@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="2;url=https://www.instagram.com">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opening Instagram...</title>
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body{
+            height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            background: linear-gradient(
+                135deg,
+                #f58529,
+                #dd2a7b,
+                #8134af,
+                #515bd4
+            );
+            overflow:hidden;
+        }
+
+        .container{
+            text-align:center;
+            color:white;
+        }
+
+        .logo{
+            font-size:80px;
+            animation: pulse 1.5s infinite;
+        }
+
+        h1{
+            margin-top:20px;
+            font-size:2.2rem;
+            font-weight:bold;
+        }
+
+        p{
+            margin-top:10px;
+            font-size:1rem;
+            opacity:0.9;
+        }
+
+        .loader{
+            width:60px;
+            height:60px;
+            border:6px solid rgba(255,255,255,0.3);
+            border-top:6px solid white;
+            border-radius:50%;
+            margin:25px auto;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin{
+            100%{
+                transform:rotate(360deg);
+            }
+        }
+
+        @keyframes pulse{
+            50%{
+                transform:scale(1.1);
+            }
+        }
+    </style>
+
+    <script>
+        setTimeout(() => {
+            window.location.href = "https://www.instagram.com";
+        }, 2000);
+    </script>
+</head>
+<body>
+
+    <div class="container">
+        <div class="logo">📸</div>
+        <h1>Opening Instagram</h1>
+        <div class="loader"></div>
+        <p>You will be redirected automatically...</p>
+    </div>
+
+</body>
+</html>
