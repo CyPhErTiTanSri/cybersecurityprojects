@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cybersecurity Demo</title>
+<title>Cybersecurity Simulation</title>
 
 <style>
 *{
@@ -13,97 +13,88 @@
 }
 
 body{
-    font-family: Arial, Helvetica, sans-serif;
-    background:#000;
-    opacity:0.5;
+    height:100vh;
     overflow:hidden;
-}
-#background{
-    position:fixed;
-    inset:0;
-<body>
+    font-family:Arial, Helvetica, sans-serif;
 
-<img src="skull.jpeg"
-     alt="Skull"
-     style="
-     position:fixed;
-     top:0;
-     left:0;
-     width:100%;
-     height:100%;
-     object-fit:cover;
-     z-index:-1;">
-
-<h1 style="
-color:red;
-font-size:80px;
-text-align:center;
-margin-top:200px;">
-SIMULATED CYBER ATTACK
-</h1>
-
-</body>
-    filter:brightness(0.25);
+    background-image:url('skull.jpeg');
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
 }
 
-/* Popup */
-#popup{
+.overlay{
     position:fixed;
-    inset:0;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.65);
+
     display:flex;
     flex-direction:column;
     justify-content:center;
     align-items:center;
-    background:rgba(0,0,0,0.7);
     text-align:center;
 }
 
-.title{
+.warning{
     color:#ff0000;
-    font-size:6rem;
+    font-size:90px;
     font-weight:900;
     text-transform:uppercase;
+
     text-shadow:
-        0 0 10px red,
-        0 0 20px red,
-        0 0 40px red;
-    animation:flash 0.8s infinite;
+        0 0 10px #ff0000,
+        0 0 20px #ff0000,
+        0 0 40px #ff0000,
+        0 0 80px #ff0000;
+
+    animation:blink 1s infinite;
 }
 
-.subtitle{
-    margin-top:20px;
+.subtext{
     color:white;
-    font-size:1.8rem;
-    font-weight:bold;
+    font-size:28px;
+    margin-top:20px;
     letter-spacing:2px;
 }
 
-.notice{
-    margin-top:25px;
+.note{
     color:#00ff00;
-    font-size:1rem;
+    margin-top:30px;
+    font-size:18px;
 }
 
-@keyframes flash{
-    0%,100%{opacity:1;}
-    50%{opacity:0.4;}
+@keyframes blink{
+    0%,100%{
+        opacity:1;
+    }
+    50%{
+        opacity:0.4;
+    }
 }
 </style>
 </head>
+
 <body>
 
-<div id="background"></div>
+<div class="overlay">
+    <div class="warning">
+        SIMULATED<br>CYBER ATTACK
+    </div>
 
-<div id="popup">
-    <div class="title">SIMULATED<br>CYBER ATTACK</div>
-    <div class="subtitle">Training / Demonstration Only</div>
-    <div class="notice">
-        This page is a visual simulation and does not indicate a real compromise.
+    <div class="subtext">
+        SECURITY TRAINING DEMONSTRATION
+    </div>
+
+    <div class="note">
+        This is a simulation and not a real compromise.
     </div>
 </div>
 
 <script>
-window.onload = () => {
+window.onload = function() {
     alert("SIMULATED CYBER ATTACK DEMO");
 };
 </script>
