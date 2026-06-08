@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Friendship Meter</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#0f172a,#1e293b,#334155);
+    overflow:hidden;
+}
+
+.card{
+    width:450px;
+    padding:40px;
+    text-align:center;
+    border-radius:25px;
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(12px);
+    box-shadow:0 0 30px rgba(0,0,0,0.4);
+    color:white;
+}
+
+h1{
+    margin-bottom:15px;
+    font-size:2rem;
+}
+
+.subtitle{
+    color:#cbd5e1;
+    margin-bottom:30px;
+}
+
+.bar-container{
+    width:100%;
+    height:35px;
+    border:3px solid white;
+    border-radius:50px;
+    position:relative;
+    overflow:visible;
+}
+
+.bar{
+    height:100%;
+    width:0%;
+    border-radius:50px;
+    background:linear-gradient(90deg,#38bdf8,#22c55e,#eab308);
+    animation:fillAndBreak 6s forwards;
+}
+
+.percent{
+    margin-top:20px;
+    font-size:1.5rem;
+    font-weight:bold;
+    animation:textChange 6s forwards;
+}
+
+.infinity{
+    opacity:0;
+    margin-top:25px;
+    animation:showInfinity 6s forwards;
+}
+
+.infinity h2{
+    font-size:4rem;
+    color:#facc15;
+    text-shadow:0 0 15px #facc15,
+                 0 0 30px #facc15;
+}
+
+.infinity p{
+    margin-top:10px;
+    font-size:1.1rem;
+    color:#f8fafc;
+}
+
+@keyframes fillAndBreak{
+    0%{
+        width:0%;
+    }
+    60%{
+        width:100%;
+    }
+    80%{
+        width:120%;
+        box-shadow:0 0 20px #22c55e;
+    }
+    90%{
+        width:140%;
+        transform:rotate(1deg);
+    }
+    100%{
+        width:180%;
+        opacity:0;
+    }
+}
+
+@keyframes textChange{
+    0%{
+        content:"0%";
+    }
+    100%{
+        opacity:0;
+    }
+}
+
+@keyframes showInfinity{
+    0%,80%{
+        opacity:0;
+        transform:scale(0.5);
+    }
+    100%{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
+.card::before,
+.card::after{
+    content:"✨";
+    position:absolute;
+    font-size:2rem;
+    animation:float 4s infinite ease-in-out;
+}
+
+.card::before{
+    left:20px;
+    top:20px;
+}
+
+.card::after{
+    right:20px;
+    bottom:20px;
+}
+
+@keyframes float{
+    50%{
+        transform:translateY(-10px);
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="card">
+    <h1>Friendship Meter ❤️</h1>
+    <p class="subtitle">Measuring how much I treasure my you...</p>
+
+    <div class="bar-container">
+        <div class="bar"></div>
+    </div>
+
+    <div class="percent">
+        Loading Friendship...
+    </div>
+
+    <div class="infinity">
+        <h2>∞</h2>
+        <p>
+            Friendship Level: Infinite<br>
+            You  are not just my friend,
+            you're family. ❤️
+        </p>
+    </div>
+</div>
+
+</body>
+</html>
