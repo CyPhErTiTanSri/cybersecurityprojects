@@ -3,151 +3,231 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Friendship Meter</title>
+<title>Infinite Friendship</title>
 
 <style>
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:'Poppins',sans-serif;
+    font-family:Arial, sans-serif;
 }
 
 body{
     height:100vh;
+    overflow:hidden;
     display:flex;
     justify-content:center;
     align-items:center;
-    background:linear-gradient(135deg,#0f172a,#1e293b,#334155);
-    overflow:hidden;
-}
-
-.card{
-    width:450px;
-    padding:40px;
-    text-align:center;
-    border-radius:25px;
-    background:rgba(255,255,255,0.08);
-    backdrop-filter:blur(12px);
-    box-shadow:0 0 30px rgba(0,0,0,0.4);
+    background:
+    radial-gradient(circle at 20% 20%, #3b1d72, transparent 20%),
+    radial-gradient(circle at 80% 30%, #1a237e, transparent 20%),
+    radial-gradient(circle at 50% 80%, #880e4f, transparent 25%),
+    linear-gradient(135deg,#050816,#0f172a,#020617);
     color:white;
 }
 
+/* Stars */
+body::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+    radial-gradient(white 1px, transparent 1px),
+    radial-gradient(white 1px, transparent 1px);
+    background-size:80px 80px,120px 120px;
+    animation:twinkle 6s infinite alternate;
+    opacity:0.7;
+}
+
+@keyframes twinkle{
+    from{opacity:0.4;}
+    to{opacity:0.9;}
+}
+
+.card{
+    width:500px;
+    padding:40px;
+    text-align:center;
+    position:relative;
+    z-index:2;
+    backdrop-filter:blur(10px);
+    background:rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,0.15);
+    border-radius:25px;
+}
+
 h1{
-    margin-bottom:15px;
-    font-size:2rem;
+    margin-bottom:10px;
 }
 
-.subtitle{
-    color:#cbd5e1;
-    margin-bottom:30px;
+p{
+    color:#dbeafe;
 }
 
-.bar-container{
+/* Progress Bar */
+.bar-box{
     width:100%;
-    height:35px;
+    height:40px;
     border:3px solid white;
     border-radius:50px;
-    position:relative;
+    margin-top:30px;
     overflow:visible;
+    position:relative;
 }
 
 .bar{
     height:100%;
     width:0%;
     border-radius:50px;
-    background:linear-gradient(90deg,#38bdf8,#22c55e,#eab308);
-    animation:fillAndBreak 6s forwards;
+    background:linear-gradient(90deg,#06b6d4,#22c55e,#facc15);
+    animation:friendship 7s forwards;
 }
 
-.percent{
-    margin-top:20px;
-    font-size:1.5rem;
-    font-weight:bold;
-    animation:textChange 6s forwards;
+/* CRACK EFFECT */
+.crack{
+    position:absolute;
+    top:-10px;
+    left:50%;
+    transform:translateX(-50%);
+    font-size:55px;
+    opacity:0;
+    animation:breakBar 7s forwards;
 }
 
+/* HEART EXPLOSION */
+.hearts{
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+}
+
+.heart{
+    position:absolute;
+    font-size:28px;
+    opacity:0;
+}
+
+.heart:nth-child(1){
+    left:50%;
+    top:50%;
+    animation:explode1 2s 4.8s forwards;
+}
+
+.heart:nth-child(2){
+    left:50%;
+    top:50%;
+    animation:explode2 2s 4.8s forwards;
+}
+
+.heart:nth-child(3){
+    left:50%;
+    top:50%;
+    animation:explode3 2s 4.8s forwards;
+}
+
+.heart:nth-child(4){
+    left:50%;
+    top:50%;
+    animation:explode4 2s 4.8s forwards;
+}
+
+.heart:nth-child(5){
+    left:50%;
+    top:50%;
+    animation:explode5 2s 4.8s forwards;
+}
+
+.heart:nth-child(6){
+    left:50%;
+    top:50%;
+    animation:explode6 2s 4.8s forwards;
+}
+
+@keyframes explode1{
+    to{transform:translate(-180px,-100px) scale(2);opacity:0;}
+}
+@keyframes explode2{
+    to{transform:translate(180px,-120px) scale(2);opacity:0;}
+}
+@keyframes explode3{
+    to{transform:translate(-220px,80px) scale(2);opacity:0;}
+}
+@keyframes explode4{
+    to{transform:translate(220px,90px) scale(2);opacity:0;}
+}
+@keyframes explode5{
+    to{transform:translate(0,-200px) scale(2);opacity:0;}
+}
+@keyframes explode6{
+    to{transform:translate(0,180px) scale(2);opacity:0;}
+}
+
+/* Infinity Section */
 .infinity{
     opacity:0;
-    margin-top:25px;
-    animation:showInfinity 6s forwards;
+    transform:scale(0.5);
+    animation:showInfinity 2s 5.5s forwards;
 }
 
 .infinity h2{
-    font-size:4rem;
-    color:#facc15;
-    text-shadow:0 0 15px #facc15,
-                 0 0 30px #facc15;
+    font-size:6rem;
+    margin-top:25px;
+    color:#ffd54f;
+    text-shadow:
+    0 0 15px #ffd54f,
+    0 0 30px #ffd54f,
+    0 0 60px #ffd54f;
+    animation:pulse 2s infinite;
 }
 
 .infinity p{
-    margin-top:10px;
-    font-size:1.1rem;
-    color:#f8fafc;
+    font-size:1.2rem;
+    line-height:1.6;
 }
 
-@keyframes fillAndBreak{
+@keyframes friendship{
     0%{
         width:0%;
     }
-    60%{
+    40%{
         width:100%;
     }
-    80%{
-        width:120%;
-        box-shadow:0 0 20px #22c55e;
+    60%{
+        width:130%;
     }
-    90%{
-        width:140%;
-        transform:rotate(1deg);
+    80%{
+        width:170%;
     }
     100%{
-        width:180%;
+        width:220%;
         opacity:0;
     }
 }
 
-@keyframes textChange{
-    0%{
-        content:"0%";
+@keyframes breakBar{
+    0%,65%{
+        opacity:0;
+    }
+    70%{
+        opacity:1;
+        transform:translateX(-50%) scale(1.2) rotate(-5deg);
     }
     100%{
-        opacity:0;
+        opacity:1;
     }
 }
 
 @keyframes showInfinity{
-    0%,80%{
-        opacity:0;
-        transform:scale(0.5);
-    }
-    100%{
+    to{
         opacity:1;
         transform:scale(1);
     }
 }
 
-.card::before,
-.card::after{
-    content:"✨";
-    position:absolute;
-    font-size:2rem;
-    animation:float 4s infinite ease-in-out;
-}
-
-.card::before{
-    left:20px;
-    top:20px;
-}
-
-.card::after{
-    right:20px;
-    bottom:20px;
-}
-
-@keyframes float{
+@keyframes pulse{
     50%{
-        transform:translateY(-10px);
+        transform:scale(1.1);
     }
 }
 </style>
@@ -155,25 +235,36 @@ h1{
 <body>
 
 <div class="card">
-    <h1>Friendship Meter ❤️</h1>
-    <p class="subtitle">Measuring how much I treasure my you...</p>
 
-    <div class="bar-container">
+    <h1>💖 Friendship Meter 💖</h1>
+    <p>Calculating how much I treasure my you...</p>
+
+    <div class="bar-box">
         <div class="bar"></div>
+        <div class="crack">💥</div>
     </div>
 
-    <div class="percent">
-        Loading Friendship...
+    <div class="hearts">
+        <span class="heart">❤️</span>
+        <span class="heart">💖</span>
+        <span class="heart">💕</span>
+        <span class="heart">💗</span>
+        <span class="heart">💘</span>
+        <span class="heart">💝</span>
     </div>
 
     <div class="infinity">
         <h2>∞</h2>
         <p>
-            Friendship Level: Infinite<br>
-            You  are not just my friend,
-            you're family. ❤️
+            Friendship Level: INFINITE<br><br>
+            The meter tried to measure how much
+            you mean to me...<br>
+            It reached 100%, went beyond its limits,
+            shattered into pieces, and gave up.<br><br>
+            Some friendships simply cannot be measured. ❤️✨
         </p>
     </div>
+
 </div>
 
 </body>
